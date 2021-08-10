@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show</title>
+</head>
+
+<body>
+    <p>
+        <b>
+            <%= activity.heading %>
+        </b> - <%= activity.description %>
+            <form action="/">
+                <button>Home</button>
+            </form>
+            <form action="/<%= activity.id %>/edit ">
+                <button>Edit</button>
+            </form>
+            <form method="POST" action="/<%= activity.id %>?_method=DELETE">
+            <button id="delete">Delete</button>
+            </form>
+    </p>
+
+</body>
+
+</html>
