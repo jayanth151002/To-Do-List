@@ -43,7 +43,7 @@ button{
     border:3px solid rgb(77, 3, 80);
     border-radius: 10px;
     padding:10px;
-    margin:10px;
+    margin:5px;
 }
 
 button:hover{
