@@ -77,6 +77,6 @@ app.delete('/:id', (req, res) => {
     res.redirect('/')
 })
 
-app.listen(5000, () => {
+app.listen(process.env.PORT||5000, () => {
     console.log("Port 5000");
 })
