@@ -6,24 +6,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Show</title>
+
+    <link href="/css/show.css" rel="stylesheet">
+
 </head>
 
 <body>
-    <p>
-        <b>
-            <%= activity.heading %>
-        </b> - <%= activity.description %>
-            <form action="/">
-                <button>Home</button>
-            </form>
-            <form action="/<%= activity.id %>/edit ">
-                <button>Edit</button>
-            </form>
-            <form method="POST" action="/<%= activity.id %>?_method=DELETE">
-            <button id="delete">Delete</button>
-            </form>
-    </p>
+    <div class="content">
+        <p>
+        <dl>
+            <dt>
+                <b>
+                    <%= activity.heading %>
+                </b>
+            </dt>
+            <dd>
+                <%= activity.description %>
+            </dd>
+        </dl>
+
+        <div class="show">
+            <div class="show-items">
+                <form action="/">
+                    <button>Home</button>
+                </form>
+            </div>
+            <div class="show-items">
+                <form action="/<%= activity.id %>/edit ">
+                    <button>Edit</button>
+                </form>
+            </div>
+            <div class="show-items">
+                <form method="POST" action="/<%= activity.id %>?_method=DELETE">
+                    <button id="delete">Delete</button>
+                </form>
+            </div>
+        </div>
+        </p>
+    </div>
 
 </body>
+<script src="\js\show.js"></script>
 
 </html>

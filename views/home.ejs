@@ -6,21 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="stylesheet" href="/css/home.css">
 </head>
 
 <body>
     <h1>To Do List</h1>
-    <ul>
-        <% for(let ob of todo){ %>
-            <li>
-                <b>
-                    <%= ob.heading %>
-                </b> - <%= ob.description%>
-                    <form action='/<%= ob.id %>'><button>View</button></form>
-            </li>
-            <%} %>
-    </ul>
-    <form action="/new"><button>Add 'To Do' Activity</button></form>
+
+    <% if(todo.length!=0){ %>
+        <dl>
+            <% for(let ob of todo){ %>
+
+
+                <dt>
+                    <b>
+                        <%= ob.heading %>
+                    </b>
+                </dt>
+                <dd>
+                    <div class="display">
+                        <%= ob.description%>
+                    </div>
+
+                </dd>
+                <form action='/<%= ob.id %>'>
+                    <button>View</button>
+                </form>
+                <hr>
+                <%} %>
+        </dl>
+
+        <%}else{ %>
+            <h2>Hurray!! No work due...</h2>
+            <%}%>
+                <form action="/new"><button>Add 'To Do' Activity</button></form>
+
 </body>
 
 </html>

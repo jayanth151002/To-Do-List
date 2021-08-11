@@ -11,23 +11,7 @@ const app = express();
 const methodOverride = require('method-override')
 const { v4: uuid } = require('uuid');
 
-let todo = [
-    {
-        id: uuid(),
-        heading: "A",
-        description: "a"
-    },
-    {
-        id: uuid(),
-        heading: "B",
-        description: "b"
-    },
-    {
-        id: uuid(),
-        heading: "C",
-        description: "c"
-    }
-];
+let todo = [];
 
 
 app.use(express.urlencoded({ extended: true }));
@@ -35,6 +19,7 @@ app.use(express.json());
 app.use(methodOverride('_method'))
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/', (req, res) => {
     res.render('home.ejs', { todo });
@@ -69,10 +54,16 @@ app.get('/:id/edit', (req, res) => {
 
 app.patch('/:id', (req, res) => {
     const { id } = req.params;
-    if (req.body.description != "") {
+    if (req.body.description != "" && req.body.description.length <= 90) {
         const findAct = todo.find(c => c.id === id);
+        console.log(req.body.description.length)
         findAct.description = req.body.description;
         res.redirect('/')
+    }
+    else if (req.body.description.length > 90) {
+        const { id } = req.params;
+        const activity = todo.find(c => c.id === id);
+        res.render('edit.ejs', { activity });
     }
     else {
         const activity = todo.find(c => c.id === id);
